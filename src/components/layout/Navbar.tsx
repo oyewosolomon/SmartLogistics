@@ -17,7 +17,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <Package className="h-8 w-8 text-blue-600" />
-            <span className="text-xl font-bold text-gray-900">SmartLogistics Hub</span>
+            <span className="text-xl font-bold text-gray-900">SmartLogistics</span>
           </div>
 
           {/* Desktop Menu */}

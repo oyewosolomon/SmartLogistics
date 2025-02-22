@@ -36,7 +36,7 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
               <Package className="h-8 w-8 text-blue-400" />
-              <span className="text-xl font-bold">SmartLogistics Hub</span>
+              <span className="text-xl font-bold">SmartLogistics</span>
             </div>
             <p className="text-gray-400">
               Transforming supply chains with AI-powered logistics optimization
