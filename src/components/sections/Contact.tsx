@@ -195,20 +195,8 @@ const ContactSection = () => {
             </div>
 
             {/* FAQ Accordion */}
-            <div className="bg-gray-50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold mb-4">Frequently Asked Questions</h3>
-              <Accordion type="single" collapsible>
-                {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+            <div className="bg-gray-50 p-6 h-40 rounded-xl">
+              
             </div>
           </div>
         </div>

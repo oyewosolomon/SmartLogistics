@@ -66,7 +66,9 @@ export default function Home() {
       <DashboardPreview/>
     <ProcessSection/>
     <CtaSection/>
+    <PricingSection/>
       <Testimonials/>
+    <FAQSection/>
     
       <Contact/>
       <Footer/>
