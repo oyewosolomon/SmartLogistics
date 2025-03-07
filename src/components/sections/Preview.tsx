@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import Tab  from '@/components/ui/tab';
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import Tab from '@/components/ui/tab';
 import { Card, CardContent } from '@/components/ui/card';
 
 const DashboardPreview = () => {
   const [activeTab, setActiveTab] = useState('performance');
 
-  const performanceData = [
-    { name: 'Jan', deliveries: 42000, costs: 380000, efficiency: 94 },
-    { name: 'Feb', deliveries: 44000, costs: 375000, efficiency: 95 },
-    { name: 'Mar', deliveries: 46000, costs: 370000, efficiency: 96 },
-    { name: 'Apr', deliveries: 48000, costs: 365000, efficiency: 97 },
-    { name: 'May', deliveries: 50000, costs: 360000, efficiency: 97 },
-    { name: 'Jun', deliveries: 52000, costs: 355000, efficiency: 98 },
+  // Data for the doughnut chart
+  const doughnutData = [
+    { name: 'Deliveries', value: 52000 },
+    { name: 'Costs', value: 355000 },
+    { name: 'Efficiency', value: 98 },
   ];
 
+  // Colors for the doughnut chart segments
+  const COLORS = ['#2563eb', '#16a34a', '#f59e0b'];
+
   return (
-    <section className="py-20 bg-white" id='solutions'>
+    <section className="py-20 bg-white" id="solutions">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -30,23 +31,23 @@ const DashboardPreview = () => {
         <Card className="max-w-5xl mx-auto bg-white shadow-xl rounded-xl overflow-hidden">
           <div className="border-b border-gray-200">
             <div className="flex space-x-4 px-6 py-4">
-              <Tab 
-                active={activeTab === 'performance'} 
+              <Tab
+                active={activeTab === 'performance'}
                 onClick={() => setActiveTab('performance')}
                 className={`px-4 py-2 rounded-lg cursor-pointer ${
-                  activeTab === 'performance' 
-                    ? 'bg-blue-600 text-white' 
+                  activeTab === 'performance'
+                    ? 'bg-blue-600 text-white'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
                 Performance Metrics
               </Tab>
-              <Tab 
-                active={activeTab === 'shipments'} 
+              <Tab
+                active={activeTab === 'shipments'}
                 onClick={() => setActiveTab('shipments')}
                 className={`px-4 py-2 rounded-lg cursor-pointer ${
-                  activeTab === 'shipments' 
-                    ? 'bg-blue-600 text-white' 
+                  activeTab === 'shipments'
+                    ? 'bg-blue-600 text-white'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -74,29 +75,26 @@ const DashboardPreview = () => {
               </div>
             </div>
 
+            {/* Doughnut Chart */}
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={performanceData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis yAxisId="left" />
-                  <YAxis yAxisId="right" orientation="right" />
+                <PieChart>
+                  <Pie
+                    data={doughnutData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60} // Adjust inner radius for doughnut effect
+                    outerRadius={80}
+                    fill="#8884d8"
+                    paddingAngle={5}
+                    dataKey="value"
+                  >
+                    {doughnutData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
                   <Tooltip />
-                  <Line 
-                    yAxisId="left"
-                    type="monotone" 
-                    dataKey="deliveries" 
-                    stroke="#2563eb" 
-                    strokeWidth={2} 
-                  />
-                  <Line 
-                    yAxisId="right"
-                    type="monotone" 
-                    dataKey="costs" 
-                    stroke="#16a34a" 
-                    strokeWidth={2} 
-                  />
-                </LineChart>
+                </PieChart>
               </ResponsiveContainer>
             </div>
           </CardContent>

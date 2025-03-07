@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, Package } from 'lucide-react';
+import { Menu, X, Package } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to manage mobile menu open/close
-  const [isScrolled, setIsScrolled] = useState(false); // State to manage scroll behavior (optional)
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -11,8 +10,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50">
-      <div className="container mx-auto px-6 py-4">
+    <nav className="fixed max-w-7xl mx-auto inset-x-0 top-3 w-full bg-white/50 backdrop-blur-md z-50 rounded-t-3xl">
+      {/* Inner Container */}
+      <div className="px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">

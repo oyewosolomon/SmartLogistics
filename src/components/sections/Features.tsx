@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { 
   Truck, 
   BarChart2, 
@@ -7,18 +7,22 @@ import {
   AlertCircle, 
   TrendingUp 
 } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FeatureCard = ({ icon: Icon, title, description }: {
   icon: React.ElementType;
   title: string;
   description: string;
 }) => (
-  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+  <div className="bg-white border border-x-0 border-t-0 border-blue-600 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
     <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
       <Icon className="h-6 w-6 text-blue-600" />
     </div>
     <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
-    <p className="text-gray-600">{description}</p>
+    <p className="text-gray-600 flex-grow">{description}</p>
   </div>
 );
 
@@ -56,6 +60,26 @@ const Features = () => {
     }
   ];
 
+  const featureCardsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    // Animate each feature card
+    featureCardsRef.current.forEach((card, index) => {
+      gsap.from(card, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        delay: index * 0.2, // Staggered delay
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%", // Start animation when the card is 80% in view
+          toggleActions: "play none none none", // Play animation once
+        },
+      });
+    });
+  }, []);
+
+
   return (
     <section id="features" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
@@ -68,14 +92,16 @@ const Features = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Flexbox Container */}
+        <div className="flex flex-wrap gap-8">
           {features.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
+            <div key={index} className="flex-1 min-w-[350px]">
+              <FeatureCard
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            </div>
           ))}
         </div>
       </div>
