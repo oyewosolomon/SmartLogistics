@@ -35,7 +35,8 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <Package className="h-8 w-8 text-blue-400" />
+              {/* <Package className="h-8 w-8 text-blue-400" /> */}
+              <img src="/favicon.svg" className='h-8' alt="SmartLogistics" />
               <span className="text-xl font-bold">SmartLogistics</span>
             </div>
             <p className="text-gray-400">

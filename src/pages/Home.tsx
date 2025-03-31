@@ -64,10 +64,10 @@ export default function Home() {
       <Hero/>
       <Features/>
       <DashboardPreview/>
-    <ProcessSection/>
-    <CtaSection/>
-    <PricingSection/>
-      <Testimonials/>
+      <ProcessSection/>
+      <CtaSection/>
+      <PricingSection/>
+      {/* <Testimonials/> */}
     <FAQSection/>
     
       <Contact/>

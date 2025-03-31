@@ -17,7 +17,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href='/' className="flex items-center space-x-2">
-            <Package className="h-8 w-8 text-blue-600" />
+            {/* <Package className="h-8 w-8 text-blue-600" /> */}
+            <img src="/favicon.svg" className='h-8' alt="SmartLogistics" />
             <span className="text-xl font-bold text-gray-900">SmartLogistics</span>
           </a>
 

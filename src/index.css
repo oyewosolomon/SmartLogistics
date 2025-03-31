@@ -24,6 +24,8 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222 89% 51%;
     --radius: 0.75rem;
+    --font-lora: 'Lora', serif;
+    --font-sans: 'ui-sans-serif', sans-serif;
   }
 
   .dark {
@@ -46,10 +48,34 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
+    --font-lora: 'Lora', serif;
+    --font-sans: 'ui-sans-serif', sans-serif;
   }
 
   * {
     @apply border-border;
+  }
+   /* Apply Lora to body text */
+   body {
+    font-family: var(--font-sans);
+    @apply font-normal;
+    line-height: 1.6; /* Optimal for serif fonts */
+  }
+
+  /* Heading weights */
+  h1, h2, h3 {
+    font-family: var(--font-lora), var(--font-sans);
+    @apply font-semibold; /* 600 weight */
+  }
+
+  /* Beautiful italics */
+  em, i, blockquote {
+    font-style: italic;
+  }
+
+  /* Sans utility class */
+  .font-sans {
+    font-family: var(--font-sans);
   }
   body {
     @apply bg-background text-foreground;
