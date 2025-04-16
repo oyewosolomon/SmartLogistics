@@ -6,8 +6,8 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 interface Plan {
   name: string;
   description: string;
-  monthlyPrice: number;
-  annualPrice: number;
+  monthlyPrice: string;
+  annualPrice: string;
   shipments: string;
   features: string[];
   highlight: boolean;
@@ -26,8 +26,8 @@ const PricingSection: React.FC = () => {
     {
       name: "Starter",
       description: "Perfect for small businesses just getting started",
-      monthlyPrice: 499,
-      annualPrice: 449,
+      monthlyPrice: "200,000",
+      annualPrice: "320,000",
       shipments: "Up to 5,000",
       features: [
         "Real-time tracking",
@@ -42,8 +42,8 @@ const PricingSection: React.FC = () => {
     {
       name: "Professional",
       description: "Ideal for growing businesses with complex needs",
-      monthlyPrice: 999,
-      annualPrice: 899,
+      monthlyPrice: "280,000",
+      annualPrice: "400,000",
       shipments: "Up to 25,000",
       features: [
         "Everything in Starter",
@@ -59,8 +59,8 @@ const PricingSection: React.FC = () => {
     {
       name: "Enterprise",
       description: "Custom solutions for large organizations",
-      monthlyPrice: 2499,
-      annualPrice: 2249,
+      monthlyPrice: "500,000",
+      annualPrice: "850,000",
       shipments: "Unlimited",
       features: [
         "Everything in Professional",
@@ -141,7 +141,7 @@ const PricingSection: React.FC = () => {
                 <p className="text-gray-600 mb-4">{plan.description}</p>
                 <div className="mb-4">
                   <span className="text-4xl font-bold text-gray-900">
-                    ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                  ₦{isAnnual ? plan.annualPrice : plan.monthlyPrice}
                   </span>
                   <span className="text-gray-600">/month</span>
                 </div>
